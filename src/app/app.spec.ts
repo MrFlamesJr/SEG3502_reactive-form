@@ -15,6 +15,7 @@ describe('App', () => {
     expect(app).toBeTruthy();
   });
 
+  // TODO: fix this test, the placeholder h1 was removed from app.html
   it('should render title', async () => {
     const fixture = TestBed.createComponent(App);
     await fixture.whenStable();
