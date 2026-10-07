@@ -1,2 +1,21 @@
-<p>user-form works!</p>
+<div class="form-floating mb-3">
+  <input type="text" class="form-control" id="firstName" placeholder="First name" [(ngModel)]="user.firstName">
+  <label for="firstName">First name</label>
+</div>
+
+<div class="form-floating mb-3">
+  <input type="text" class="form-control" id="lastName" placeholder="Last name" [(ngModel)]="user.lastName">
+  <label for="lastName">Last name</label>
+</div>
+
+<div class="form-floating mb-3">
+  <input type="text" class="form-control" id="phone" placeholder="Phone number" [(ngModel)]="user.phone">
+  <label for="phone">Phone number</label>
+</div>
+
+<div class="form-floating mb-3">
+  <input type="text" class="form-control" id="email" placeholder="Email" [(ngModel)]="user.email">
+  <label for="email">Email</label>
+</div>
+
 <a routerLink="/result">[DEBUG] goto 'Result' page</a>
