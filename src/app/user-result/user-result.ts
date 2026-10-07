@@ -7,4 +7,6 @@ import { RouterLink } from '@angular/router';
   styleUrl: './user-result.css',
   templateUrl: './user-result.html',
 })
-export class UserResult {}
+export class UserResult {
+  // TODO: inject UserService and get the submitted user with getUser()
+}

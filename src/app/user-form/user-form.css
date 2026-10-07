@@ -1,0 +1,168 @@
+/* --ink is the text color of an element; selecting that text highlights it in the same color */
+.screen {
+  --green: #00ff41;
+  --green-dim: #0a7a22;
+  --red: #ff3b3b;
+  --red-dark: #1a0505;
+  --bg: #020802;
+  --fill: #0b2a14;
+  --tile: 210px;
+  --ink: var(--green);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Courier New', Courier, monospace;
+  position: relative;
+  isolation: isolate;
+}
+
+/*
+  mathhhh
+  The scroll must end on a whole number of tiles across and down, or the loop jumps.
+  Its angle is atan(down / across), and 30deg needs 0.577 (tan 30deg).
+  4 / 7 = 0.571 is the smallest whole-number pair that gets close (29.7deg).
+*/
+.screen::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  /* the svg is only a mask (its shapes), so its own fill is ignored and the color comes from here */
+  background: var(--green);
+  opacity: 0.22;
+  mask: url('/binary.svg') 0 0 / var(--tile);
+  animation: scroll 125s linear infinite;
+}
+
+@keyframes scroll {
+  to { mask-position: calc(var(--tile) * 7) calc(var(--tile) * 4); }
+}
+
+.panel {
+  width: 100%;
+  max-width: 420px;
+  padding: 2rem;
+  background: #02080266;
+  backdrop-filter: blur(3px);
+  border: 1px solid var(--green);
+}
+
+.title {
+  margin-bottom: 1.5rem;
+  font-size: 1.25rem;
+  letter-spacing: 0.1em;
+}
+
+.cursor {
+  animation: blink 1s steps(1) infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+/* inputs */
+.form-control,
+.form-control:focus {
+  background: transparent;
+  color: var(--ink);
+  box-shadow: none;
+}
+
+.form-control {
+  border-color: var(--green-dim);
+}
+
+.form-control:focus {
+  border-color: var(--green);
+}
+
+/* browsers paint autofilled fields themselves; an inset shadow replaces that background with a green tint */
+.form-control:-webkit-autofill,
+.form-control:-webkit-autofill:focus {
+  box-shadow: 0 0 0 1000px var(--fill) inset;
+  -webkit-text-fill-color: var(--ink);
+}
+
+.form-floating label {
+  --ink: #1fb84a;
+  color: var(--ink);
+  font-style: italic;
+  letter-spacing: 0.05em;
+}
+
+/* the wrapper gets .invalid from the template once a field is touched and wrong */
+.invalid .form-control {
+  --ink: var(--red);
+  border-color: var(--red);
+}
+
+.invalid label {
+  --ink: var(--red);
+}
+
+/* floating error bubble to the right of the field, pointing at it */
+.error {
+  --ink: var(--red);
+  position: absolute;
+  top: 50%;
+  left: calc(100% + 14px);
+  transform: translateY(-50%);
+  width: max-content;
+  max-width: 190px;
+  padding: 0.3rem 0.5rem;
+  background: var(--red-dark);
+  color: var(--ink);
+  border: 1px solid var(--red);
+  font-size: 0.75rem;
+  line-height: 1.3;
+}
+
+.error::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: -5px;
+  width: 8px;
+  height: 8px;
+  background: var(--red-dark);
+  border-left: 1px solid var(--red);
+  border-bottom: 1px solid var(--red);
+  transform: translateY(-50%) rotate(45deg);
+}
+
+/* submit button */
+.btn-success {
+  width: 100%;
+  background: transparent;
+  color: var(--ink);
+  border-color: var(--green);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.btn-success:hover:not(:disabled) {
+  background: var(--green);
+  color: var(--bg);
+}
+
+/* Bootstrap blocks pointer events on disabled buttons, which hides the cursor */
+button:disabled {
+  pointer-events: auto;
+  cursor: not-allowed;
+}
+
+a {
+  --ink: var(--green-dim);
+  color: var(--ink);
+}
+
+.screen ::selection {
+  background: var(--ink);
+  color: var(--bg);
+}

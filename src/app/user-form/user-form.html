@@ -1,21 +1,43 @@
-<div class="form-floating mb-3">
-  <input type="text" class="form-control" id="firstName" placeholder="First name" [(ngModel)]="user.firstName">
-  <label for="firstName">First name</label>
+<div class="screen">
+<div class="panel">
+<h1 class="title">&gt; IDENTIFICATION<span class="cursor">_</span></h1>
+<form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+  <div class="form-floating mb-3" [class.invalid]="firstName.dirty && !firstName.valid">
+    <input type="text" class="form-control" id="firstName" placeholder="First name" formControlName="firstName">
+    <label for="firstName">First name</label>
+    @if (firstName.dirty && !firstName.valid) {
+      <div class="error">First name is required.</div>
+    }
+  </div>
+
+  <div class="form-floating mb-3" [class.invalid]="lastName.dirty && !lastName.valid">
+    <input type="text" class="form-control" id="lastName" placeholder="Last name" formControlName="lastName">
+    <label for="lastName">Last name</label>
+    @if (lastName.dirty && !lastName.valid) {
+      <div class="error">Last name is required.</div>
+    }
+  </div>
+
+  <div class="form-floating mb-3" [class.invalid]="phone.dirty && !phone.valid">
+    <input type="text" class="form-control" id="phone" placeholder="Phone number" formControlName="phone">
+    <label for="phone">Phone number</label>
+    @if (phone.dirty && !phone.valid) {
+      <div class="error">
+        Phone number must be 10 digits, and the 1st and 4th digits must not be 0.
+      </div>
+    }
+  </div>
+
+  <div class="form-floating mb-3" [class.invalid]="email.dirty && !email.valid">
+    <input type="text" class="form-control" id="email" placeholder="Email" formControlName="email">
+    <label for="email">Email</label>
+    @if (email.dirty && !email.valid) {
+      <div class="error">Email must be a valid email address.</div>
+    }
+  </div>
+
+  <button type="submit" class="btn btn-success" [disabled]="userForm.invalid">Submit</button>
+</form>
 </div>
 
-<div class="form-floating mb-3">
-  <input type="text" class="form-control" id="lastName" placeholder="Last name" [(ngModel)]="user.lastName">
-  <label for="lastName">Last name</label>
 </div>
-
-<div class="form-floating mb-3">
-  <input type="text" class="form-control" id="phone" placeholder="Phone number" [(ngModel)]="user.phone">
-  <label for="phone">Phone number</label>
-</div>
-
-<div class="form-floating mb-3">
-  <input type="text" class="form-control" id="email" placeholder="Email" [(ngModel)]="user.email">
-  <label for="email">Email</label>
-</div>
-
-<a routerLink="/result">[DEBUG] goto 'Result' page</a>
