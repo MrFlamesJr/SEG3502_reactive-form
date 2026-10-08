@@ -6,7 +6,6 @@
   --red-dark: #1a0505;
   --bg: #020802;
   --fill: #0b2a14;
-  --tile: 210px;
   --ink: var(--green);
   min-height: 100vh;
   display: flex;
@@ -21,34 +20,11 @@
   isolation: isolate;
 }
 
-/*
-  mathhhh
-  The scroll must end on a whole number of tiles across and down, or the loop jumps.
-  Its angle is atan(down / across), and 30deg needs 0.577 (tan 30deg).
-  4 / 7 = 0.571 is the smallest whole-number pair that gets close (29.7deg).
-*/
-.screen::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  /* the svg is only a mask (its shapes), so its own fill is ignored and the color comes from here */
-  background: var(--green);
-  opacity: 0.22;
-  mask: url('/binary.svg') 0 0 / var(--tile);
-  animation: scroll 125s linear infinite;
-}
-
-@keyframes scroll {
-  to { mask-position: calc(var(--tile) * 7) calc(var(--tile) * 4); }
-}
-
 .panel {
   width: 100%;
   max-width: 420px;
   padding: 2rem;
-  background: #02080266;
-  backdrop-filter: blur(3px);
+  background: #020802c0;
   border: 1px solid var(--green);
 }
 
