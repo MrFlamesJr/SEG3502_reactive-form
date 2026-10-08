@@ -63,6 +63,7 @@
 .form-control:-webkit-autofill:focus {
   box-shadow: 0 0 0 1000px var(--fill) inset;
   -webkit-text-fill-color: var(--ink);
+  caret-color: #000;
 }
 
 .form-floating label {
@@ -110,6 +111,28 @@
   border-left: 1px solid var(--red);
   border-bottom: 1px solid var(--red);
   transform: translateY(-50%) rotate(45deg);
+}
+
+/* too narrow for the bubble beside the panel: it drops under the field, arrow pointing up */
+@media (max-width: 860px) {
+  .error {
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+    width: auto;
+    max-width: none;
+    margin-top: 6px;
+  }
+
+  .error::before {
+    top: -5px;
+    left: 12px;
+    border: 0;
+    border-left: 1px solid var(--red);
+    border-top: 1px solid var(--red);
+    transform: rotate(45deg);
+  }
 }
 
 /* submit button */
