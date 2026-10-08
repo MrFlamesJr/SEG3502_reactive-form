@@ -1,0 +1,23 @@
+:host {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  display: flex;
+  justify-content: space-between;
+  user-select: none;
+  font-size: 0.9vw; /* so zoom doesnt affect it */
+  line-height: 1.4;
+  opacity: 0.4;
+}
+
+span {
+  background: linear-gradient(#00ff4100, #00ff41 75%, #7cff00);
+  background-clip: text;
+  color: transparent;
+  animation: fall linear infinite;
+}
+
+@keyframes fall {
+  from { transform: translateY(-100%); }
+  to { transform: translateY(100vh); }
+}

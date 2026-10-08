@@ -1,12 +1,12 @@
 import { Component, inject } from '@angular/core';
 import { AbstractControl, FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { BinaryBackground } from '../binary-background/binary-background';
+import { BinaryRain } from '../binary-rain/binary-rain';
 import { UserData } from '../model/user-data';
 import { UserService } from '../service/user-service';
 
 @Component({
-  imports: [ReactiveFormsModule, BinaryBackground],
+  imports: [ReactiveFormsModule, BinaryRain],
   selector: 'app-user-form',
   styleUrl: './user-form.css',
   templateUrl: './user-form.html',

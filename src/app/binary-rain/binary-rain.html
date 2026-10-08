@@ -1,0 +1,3 @@
+@for (column of columns; track $index) {
+  <span [style.animation-duration.s]="column.speed" [style.animation-delay.s]="column.delay">{{ column.text }}</span>
+}
