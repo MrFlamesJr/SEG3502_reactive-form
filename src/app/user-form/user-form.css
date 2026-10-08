@@ -63,7 +63,6 @@
 .form-control:-webkit-autofill:focus {
   box-shadow: 0 0 0 1000px var(--fill) inset;
   -webkit-text-fill-color: var(--ink);
-  caret-color: #000;
 }
 
 .form-floating label {
