@@ -48,6 +48,7 @@
   background: transparent;
   color: var(--ink);
   box-shadow: none;
+  border-radius: 0;
 }
 
 .form-control {
