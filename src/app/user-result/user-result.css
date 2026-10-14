@@ -17,7 +17,7 @@
 
 .panel {
   width: 100%;
-  max-width: 420px;
+  max-width: 480px;
   padding: 2rem;
   background: #020802c0;
   border: 1px solid var(--green);
@@ -46,9 +46,14 @@
 }
 
 .table th {
+  white-space: nowrap;
   color: var(--green-dim);
   font-style: italic;
   letter-spacing: 0.05em;
+}
+
+.table td {
+  overflow-wrap: anywhere;
 }
 
 .back-link {
