@@ -1,12 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { UserService } from '../service/user-service';
+import { BinaryRain } from '../binary-rain/binary-rain';
 
 @Component({
-  imports: [RouterLink],
+  imports: [RouterLink, BinaryRain],
   selector: 'app-user-result',
   styleUrl: './user-result.css',
   templateUrl: './user-result.html',
 })
 export class UserResult {
-  // TODO: inject UserService and get the submitted user with getUser()
+  private userService = inject(UserService);
+  user = this.userService.getUser();
 }
