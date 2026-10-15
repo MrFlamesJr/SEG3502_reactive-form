@@ -18,7 +18,7 @@ export class UserForm {
   userForm = this.builder.group({
     firstName: ['', Validators.required],
     lastName: ['', Validators.required],
-    phone: ['', Validators.pattern('[1-9]\\d{2}[1-9]\\d{6}')],
+    phone: ['', [Validators.required, Validators.pattern('[1-9]\\d{2}[1-9]\\d{6}')]], /* to use as PK */
     email: ['', Validators.email],
   });
 
